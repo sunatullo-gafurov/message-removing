@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { MESSAGE_CHANGE, MESSAGE_SAVE_REQUEST, MESSAGE_SAVE_SUCCESS, MESSAGE_SAVE_FAILURE, MESSAGES_SAVE_MESSAGE, MESSAGES_MESSAGE_STATUS_CHANGE, MESSAGE_EDIT, MESSAGES_FETCH_REQUEST, MESSAGES_FETCH_SUCCESS, MESSAGES_FETCH_FAILURE, MESSAGE_DELETE_REQUEST, MESSAGE_DELETE_SUCCESS } from "../actions/actionTypes";
+import { MESSAGE_CHANGE, MESSAGE_SAVE_REQUEST, MESSAGES_SAVE_MESSAGE, MESSAGES_MESSAGE_STATUS_CHANGE, MESSAGE_EDIT, MESSAGES_FETCH_REQUEST, MESSAGES_FETCH_SUCCESS, MESSAGES_FETCH_FAILURE, MESSAGE_DELETE_REQUEST, MESSAGE_DELETE_SUCCESS } from "../actions/actionTypes";
 import { MESSAGE_STATUS_PENDING } from "../constants";
 
 const initialListState = {
@@ -27,7 +27,8 @@ export function messagesListReducer(state = initialListState, action) {
             if (items.length !== 0) {
                 last = items[items.length - 1];
             }
-            const lastSeenId = last && last.id || state.lastSeenId; // только для собеседования
+            const lastSeen = last && last.id;
+            const lastSeenId = lastSeen || state.lastSeenId; // только для собеседования
             // 1. Не добавлять те элементы, которые уже есть
             // 2. Сделать удаление (пусть автоматически у других не удаляется) - удаляется только у вас
             console.log(items);

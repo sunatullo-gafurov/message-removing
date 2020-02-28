@@ -5,7 +5,7 @@ import { messageEdit, messageDelete, messageSave, messagesFetch } from '../../ac
 import { useEffect } from 'react';
 
 export default function MessagesList() {
-    const { items, loading, error } = useSelector(state => state.messages.list);
+    const { items, loading} = useSelector(state => state.messages.list);
     const dispatch = useDispatch(); // react-redux - dispatch - никогда не меняется
 
     useEffect(() => {
