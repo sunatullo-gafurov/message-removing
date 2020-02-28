@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.scrollY {
+    overflow-y: scroll;
+}
+
+.sidebar {
+    composes: scrollY; /* css modules not pure css */
+    width: 200px;
+}
+
+.main {
+    composes: scrollY; /* css modules not pure css */
+    width: calc(100% - 200px);
+}
